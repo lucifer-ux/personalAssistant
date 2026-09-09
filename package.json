@@ -1,0 +1,25 @@
+{
+  "name": "autobot",
+  "version": "0.0.1",
+  "description": "autonomous runs for a bot for people without mac mini",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucifer-ux/personalAssistant.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "lucifer-ux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucifer-ux/personalAssistant/issues"
+  },
+  "homepage": "https://github.com/lucifer-ux/personalAssistant#readme",
+  "dependencies": {
+    "grammy": "^1.46.0"
+  }
+}
