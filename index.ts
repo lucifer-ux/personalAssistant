@@ -1,15 +1,13 @@
-import { Bot } from "grammy";
+import { Bot, webhookCallback } from "grammy";
 
 const bot = new Bot("8455008214:AAE9spajZDqlPS6IOupTY0t2yyUMWWpxDKs");
 
-bot.on("message", (ctx) => {
-  const id = ctx.from;
-  console.log(id, "idd");
-  ctx.reply("we got your message");
+bot.on("message:text", async (ctx) => {
+  await ctx.reply(`Recieved: ${ctx.message.text}`);
 });
 
-bot.command("start", (ctx) =>
-  ctx.reply("Welcome lucifer its a drag but lets start"),
-);
-
-bot.start();
+export default {
+  async fetch(request: Request): Promise<Response> {
+    return webhookCallback(bot, "cloudflare-mod")(request);
+  },
+};

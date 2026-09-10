@@ -1,0 +1,8 @@
+{
+	"name": "personalassistant",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-09-10",
+	"observability": {
+		"enabled": true,
+	},
+}
