@@ -1,8 +1,10 @@
 import { Bot, webhookCallback } from 'grammy';
 
-const TELEGRAM_BOT_TOKEN = env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_WEBHOOK_SECRET = env.TELEGRAM_WEBHOOK_SECRET;
-
+interface Env {
+	TELEGRAM_BOT_TOKEN: string;
+	TELEGRAM_WEBHOOK_SECRET: string;
+	ALLOWED_TELEGRAM_USER_ID: string;
+}
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		const url = new URL(request.url);
@@ -13,12 +15,11 @@ export default {
 
 		const secret = request.headers.get('X-Telegram-Bot-Api-Secret-Token');
 
-		console.log(secret);
-		if (secret !== TELEGRAM_WEBHOOK_SECRET) {
+		if (secret !== env.TELEGRAM_WEBHOOK_SECRET) {
 			return new Response('Unauthorized', { status: 401 });
 		}
 
-		const bot = new Bot(TELEGRAM_BOT_TOKEN);
+		const bot = new Bot(env.TELEGRAM_BOT_TOKEN);
 
 		bot.on('message:text', async (ctx) => {
 			console.log('Message:', ctx.message.text);
